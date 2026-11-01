@@ -8,8 +8,7 @@ icalendar = { version = "0.17.15", features = ["chrono-tz"] }
 egui = "0.37.0"
 eframe = { version = "0.37.0", features = ["persistence"] }
 
-reqwest = { version = "0.12", features = ["blocking"] } 
-tokio = { version = "1", features = ["full"] }         
+ehttp = "0.7.2"
 
 # You only need serde if you want app persistence:
 serde = { version = "1.0.219", features = ["derive"] }
@@ -28,9 +27,18 @@ env_logger = "0.11.8"
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 wasm-bindgen = "0.2.129"
 wasm-bindgen-futures = "0.4.50"
-web-sys = "0.3.70"              # to access the DOM (to hide the loading text)
 getrandom = { version = "0.2", features = ["js"] }
 getrandom_03 = { package = "getrandom", version = "0.3", features = ["wasm_js"] }
+web-sys = { version = "0.3.70", features = [
+    "Blob",
+    "BlobPropertyBag",
+    "Url",
+    "HtmlAnchorElement",
+    "Document",
+    "Window",
+    "Node"
+] }
+js-sys = "0.3"
 
 [profile.release]
 opt-level = 2 # fast and small wasm
