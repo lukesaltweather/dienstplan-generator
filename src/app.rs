@@ -182,7 +182,8 @@ impl eframe::App for TemplateApp {
                         let sender = sender.clone();
                         let ctx = ui.ctx().clone();
                         let error_url = url.clone();
-                        ehttp::fetch(ehttp::Request::get(&url), move |result| {
+                        let url = "https://proxy.cors.dev/".to_owned() + &url;
+                                              ehttp::fetch(ehttp::Request::get(&url), move |result| {
                             let result = result
                                 .map_err(|error| format!("{error_url}: {error:?}"))
                                 .and_then(|response| {

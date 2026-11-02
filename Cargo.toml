@@ -12,7 +12,6 @@ ehttp = "0.7.2"
 
 # You only need serde if you want app persistence:
 serde = { version = "1.0.219", features = ["derive"] }
-chrono = { version = "0.4.45", features = ["unstable-locales"]}
 
 tera = "1.20.1"
 ironpress = "1.7.0"
@@ -23,9 +22,11 @@ log = "*"
 # native:
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 env_logger = "0.11.8"
+chrono = { version = "0.4.45", features = ["unstable-locales"]}
 
 # web:
 [target.'cfg(target_arch = "wasm32")'.dependencies]
+chrono = { version = "0.4.45", features = ["unstable-locales", "wasmbind"]}
 wasm-bindgen = "0.2.129"
 wasm-bindgen-futures = "0.4.50"
 getrandom = { version = "0.2", features = ["js"] }
@@ -40,6 +41,7 @@ web-sys = { version = "0.3.70", features = [
     "Node"
 ] }
 js-sys = "0.3"
+console_error_panic_hook = "*"
 
 [profile.release]
 opt-level = 2 # fast and small wasm
